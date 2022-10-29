@@ -5,7 +5,7 @@ pipeline{
          steps{
               git branch :'main',
               url : 'https://github.com/aminetrimech99/Devops.git',
-              credentialsId : 'token-for-jenkins-git3'
+              credentialsId: 'token-for-jenkins-git3'
               
               }
         }
