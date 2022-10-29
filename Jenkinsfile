@@ -4,8 +4,8 @@ pipeline{
        stage ('Git'){
          steps{
               git branch :'main',
-              url : 'https://github.com/aminetrimech99/Devops.git',
-              credentialId : 'token-for-jenkins-git'
+              url : 'https://github.com/aminetrimech99/Devops.git'
+              
               }
         }
        stage ('build')
