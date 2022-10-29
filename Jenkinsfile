@@ -3,7 +3,6 @@ pipeline{
     stages{
        stage ('Git'){
          steps{
-            echo 'Pulling ..';
               git branch :'main'
               }
         }
