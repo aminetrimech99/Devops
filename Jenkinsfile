@@ -3,7 +3,9 @@ pipeline{
     stages{
        stage ('Git'){
          steps{
-             sh "git clone https://github.com/aminetrimech99/Devops.git"
+              git branch :'main',
+              url : 'https://github.com/aminetrimech99/Devops.git',
+              credentialsId : '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'
               }
         }
        stage ('build')
