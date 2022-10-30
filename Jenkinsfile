@@ -21,5 +21,11 @@ pipeline{
                 sh 'mvn compile'
             }
         }
+          stage ('build package')
+        {
+         steps{
+                sh 'mvn package'
+            }
+        }
     }
 }
