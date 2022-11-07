@@ -41,6 +41,7 @@ pipeline{
                 sh 'mvn sonar:sonar'
              }
             }
+        }
               stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
