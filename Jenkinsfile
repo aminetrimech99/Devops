@@ -25,7 +25,7 @@ pipeline{
           stage ('build package')
         {
          steps{
-                sh 'mvn package'
+                sh 'mvn clean package'
             }
         }
          stage ('SonarQube :Quality Test')
