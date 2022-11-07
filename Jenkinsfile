@@ -38,7 +38,7 @@ pipeline{
         }
               stage("Publish to Nexus Repository Manager") {
             steps {
-               nexusArtifactUploader artifacts: [[artifactId: 'achat', classifier: '', file: 'target/achat-1.0.jar', type: 'jar']], credentialsId: 'Devops', groupId: 'tn.esprit.rh', nexusUrl: '192.168.1.26:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'http://192.168.1.26:8081/repository/maven-releases/', version: '1.0'
+                  sh " mvn -f Spring/pom.xml clean package deploy:deploy-file -DgroupId=tn.esprit.rh -DartifactId=achat -Dversion=1.0-SNAPSHOT -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://192.168.1.26:8081/repository/maven-releases/ -Dfile=target/achat-1.0.jar"
             }
               }
         }
