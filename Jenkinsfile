@@ -4,7 +4,7 @@ pipeline{
     stages{
        stage ('Git'){
          steps{
-              git branch :'main',
+              git branch :'amine',
               url : 'https://github.com/aminetrimech99/Devops.git',
               credentialsId: 'git-tokeen'
               
