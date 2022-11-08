@@ -53,6 +53,13 @@ pipeline{
                      version: '1.0'
             }
               }
+        stage('Docker image'){
+            steps {
+                 sh 'docker build -t amine/projetspring .'
+            }
+        }
+
+       
         }
     }
 
