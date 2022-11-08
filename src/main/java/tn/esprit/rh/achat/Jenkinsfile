@@ -6,7 +6,7 @@ pipeline {
             steps {
                 git branch: 'rayen',
                 url : 'https://github.com/aminetrimech99/Devops.git',
-                 credentialsId: 'jenkins-token';
+                 credentialsId: 'token-jenkins';
                 
             }
         }
