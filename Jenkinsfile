@@ -55,7 +55,7 @@ pipeline{
               }
         stage('Docker image'){
             steps {
-                 sh 'docker build -t Devops/amine-app .'
+                 sh 'docker build -t devops/amine-app .'
             }
         }
 
@@ -64,7 +64,7 @@ pipeline{
             steps {
                   withCredentials([string(credentialsId: 'dockerHub1-id', variable: 'dockerhubpwd1')]) {
                     sh 'docker login -u aminetr -p ${dockerhubpwd1}'
-                    sh 'docker push Devops/amine-app'
+                    sh 'docker push devops/amine-app'
                 }
             }
         }
