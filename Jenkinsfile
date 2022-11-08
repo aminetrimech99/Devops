@@ -55,7 +55,7 @@ pipeline{
               }
         stage('Docker image'){
             steps {
-                 sh 'sudo docker build -t amine/projetspring .'
+                 sh 'docker build -t amine/app .'
             }
         }
 
