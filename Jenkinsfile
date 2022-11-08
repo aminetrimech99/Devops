@@ -62,8 +62,8 @@ pipeline{
 
        stage('push image to DockerHub'){
             steps {
-                  withCredentials([string(credentialsId: 'dockerHub-id', variable: 'dockerhubpwd')]) {
-                    sh 'docker login -u aminetr -p ${dockerhubpwd}'
+                  withCredentials([string(credentialsId: 'dockerHub1-id', variable: 'dockerhubpwd1')]) {
+                    sh 'docker login -u aminetr -p ${dockerhubpwd1}'
                     sh 'docker push amine/app'
                 }
             }
