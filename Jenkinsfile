@@ -59,7 +59,15 @@ pipeline{
             }
         }
 
-       
+
+       stage('push image to DockerHub'){
+            steps {
+                  withCredentials([string(credentialsId: 'dockerhub-id', variable: 'dockerhubpwd')]) {
+                    sh 'docker login -u aminetr -p ${dockerhubpwd}'
+                    sh 'docker push amine/app'
+                }
+            }
+        }
         }
     }
 
