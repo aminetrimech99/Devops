@@ -55,7 +55,7 @@ pipeline{
               }
         stage('Docker image'){
             steps {
-                 sh 'docker build -t devops/amine-app .'
+                 sh 'docker build -t aminetr/amine-app .'
             }
         }
 
