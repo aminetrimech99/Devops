@@ -64,7 +64,7 @@ pipeline{
             steps {
                   withCredentials([string(credentialsId: 'dockerHub1-id', variable: 'dockerhubpwd1')]) {
                     sh 'docker login -u aminetr -p ${dockerhubpwd1}'
-                    sh 'docker push projetdevops/amine-app'
+                    sh 'docker push amine-app'
                 }
             }
         }
