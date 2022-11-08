@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('GIT Chekout') {
+            steps {
+                git branch: 'rayen',
+                url : 'https://github.com/aminetrimech99/Devops.git',
+                 credentialsId: 'jenkins-token';
+                
+            }
+        }
+        stage('MAVEN CLEAN') {
+            steps {
+                sh 'mvn clean'
+            }
+        }
+       stage('MAVEN COMPILE') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+        stage('TEST JUNIT ET MOCKITO') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('SONARQUBE STATS') {
+            steps {
+                sh 'mvn sonar:sonar  -Dsonar.login=admin -Dsonar.password=sonar'
+            }
+        }
+        
+        stage('NEXUS REPO') {
+            steps {
+                sh 'mvn deploy -DskipTests'
+            }
+        }
+
+    }
+}
