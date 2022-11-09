@@ -2,7 +2,7 @@ version : "3.3"
 
 services:
  mysqldb:
-  container_name: mysql
+  container_name: mysqldb
   image: mysql:8
   restart: unless-stopped
   environment:
@@ -10,10 +10,10 @@ services:
   volumes:
     - /home/mysqldata:/var/lib/mysql
  spring_app:
-  image: tpachat
-  container_name: tpachat
+  image: aminetr/springapp
+  container_name: spring
   restart: on-failure
   ports:
-   - 9090:9090
+   - 8089:8089
   depends_on:     
    - mysqldb
