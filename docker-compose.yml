@@ -25,7 +25,7 @@ services:
      - mysqldb
 
   angular_app:
-    image: anas1412/achatfront:1.0
+    image: anas1412/achatfront
     container_name: achatangular
     restart: on-failure
     ports:
