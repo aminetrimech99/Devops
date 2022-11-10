@@ -22,12 +22,12 @@ pipeline{
                 sh 'mvn compile'
             }
         }
-       /*  stage ('build package')
+         stage ('build package')
         {
          steps{
                 sh 'mvn clean package'
             }
-        }*/
+        }
 
           stage ('JUNIT and Mockito')
         {
