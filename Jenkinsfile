@@ -5,7 +5,7 @@ pipeline{
          stage ('Git'){
                steps{
                   git branch :'MedAliHammami',
-                  url : 'https://github.com/aminetrimech99/Devops.git',
+                  url : 'https://github.com/aminetrimech99/Devops.git'
               
                    }
             }
