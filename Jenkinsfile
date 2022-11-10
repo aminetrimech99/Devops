@@ -60,21 +60,6 @@ pipeline{
                  sh 'docker build -t aminetr/springapp .'
             }
         }
-
-
-       stage('login to DockerHub'){
-            steps { 
-		   sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u aminetr -p amineamine'
-                    
-                }
-       }
-	       stage("Push to DockerHub") {
-                steps{
-                    sh 'docker push aminetr/springapp '
-                }
-        }
-            
-        
         stage('DockerCompose') {
         
                        steps {
@@ -83,6 +68,18 @@ pipeline{
                         }
                           
         }
+
+       stage('login to DockerHub'){
+            steps { 
+		   withCredentials([string(credentialsId: 'dockerHub1-id', variable: 'dockerhubpwd')]) {
+                    sh 'docker login -u aminetr -p ${dockerhubpwd}'
+                    sh 'docker push aminetr/springapp'
+                    
+                }
+       }
+       }    
+        
+        
         }
     }
 
