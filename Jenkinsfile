@@ -70,7 +70,7 @@ pipeline{
        }
 	       stage("Push to DockerHub") {
                 steps{
-                    sh 'docker push aminetr/springapp docker.io'
+                    sh 'docker push aminetr/springapp '
                 }
         }
             
