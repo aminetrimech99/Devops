@@ -62,11 +62,17 @@ pipeline{
         }
 
 
-       stage('push image to DockerHub'){
+       stage('login to DockerHub'){
             steps { 
-		    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u aminetr -p amineamine@@',
+		   sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u aminetr -p amineamine@@'
+                    
+                }
+       }
+	       stage("Push to DockerHub") {
+                steps{
                     sh 'docker push aminetr/springapp'
                 }
+        }
             
         }
         stage('DockerCompose') {
