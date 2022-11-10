@@ -64,7 +64,7 @@ pipeline{
 
        stage('login to DockerHub'){
             steps { 
-		   sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u aminetr -p amineamine@@'
+		   sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u aminetr -p amineamine'
                     
                 }
        }
