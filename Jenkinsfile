@@ -29,12 +29,12 @@ pipeline{
             }
         }
 
-          stage ('JUNIT and Mockito')
+        /*  stage ('JUNIT and Mockito')
         {
          steps{
                 sh 'mvn test'
             }
-        }
+        }*/
          stage ('SonarQube :Quality Test')
         {
          steps{
