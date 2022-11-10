@@ -63,9 +63,8 @@ pipeline{
 
 
        stage('push image to DockerHub'){
-            steps {
-                  withCredentials([string(credentialsId: 'DockerHubF', variable: 'pwdpwd')]) {
-                    sh 'docker login -u aminetr -p ${pwdpwd}'
+            steps { 
+		    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u aminetr -p amineamine@@'
                     sh 'docker push aminetr/springapp'
                 }
             }
