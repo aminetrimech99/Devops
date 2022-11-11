@@ -2,7 +2,7 @@ pipeline{
    agent any
        stages{
             
-         stage ('Git'){
+         stage ('Github Project'){
                steps{
                   git branch :'MedAliHammami',
                   url : 'https://github.com/aminetrimech99/Devops.git'
@@ -22,7 +22,7 @@ pipeline{
                     }
            }
          
-         stage ('Build Packages'){
+         stage ('Artifact Build'){
                steps{
                    sh 'mvn clean package'
                    }
