@@ -48,7 +48,7 @@ pipeline{
                          type: 'jar']], 
                      credentialsId: 'Devops',
                      groupId: 'tn.esprit.rh', 
-                     nexusUrl: '192.168.1.26:8081', 
+                     nexusUrl: '192.168.1.12:8081', 
                      nexusVersion: 'nexus3', 
                      protocol: 'http',
                      repository: 'achat-realeases',
