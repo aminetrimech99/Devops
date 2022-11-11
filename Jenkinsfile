@@ -69,7 +69,7 @@ pipeline{
                           
         }
 
-       stage('login to DockerHub'){
+       stage('push to DockerHub'){
             steps { 
 		   withCredentials([string(credentialsId: 'dockerHub1-id', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u aminetr -p ${dockerhubpwd}'
