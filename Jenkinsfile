@@ -31,7 +31,7 @@ pipeline{
 
        stage('Docker image'){
            steps {
-                sh 'docker build -t aminetr/springapp .'
+                sh 'docker build -t doukhou/springapp .'
            }
        }
        stage('DockerCompose') {
@@ -45,8 +45,8 @@ pipeline{
       stage('push to DockerHub'){
            steps { 
         withCredentials([string(credentialsId: 'dockerHub1-id', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u aminetr -p ${dockerhubpwd}'
-                   sh 'docker push aminetr/springapp'
+                   sh 'docker login -u doukhou -p ${dockerhubpwd}'
+                   sh 'docker push doukhou/springapp'
                    
                }
       }
