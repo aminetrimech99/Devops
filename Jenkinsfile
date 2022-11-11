@@ -1,30 +1,62 @@
 pipeline{
-                   }
-            }
-
-         stage ('Maven Clean'){
-         stage ('Maven Clean & compile '){
-               steps{
-                  sh 'mvn clean install'
-                    }
-            } 
-
-         stage ('Maven Compile') {
-               steps{
-                   sh 'mvn compile'
-                    }
-           }
-            } 
-
-         stage ('Artifact Build'){
-               steps{
-                   sh 'mvn clean package'
-                   }
-           }
-         stage ('Docker'){
-               steps{
-                   sh 'Docker ps'
-                   }
-           } 
+   agent any
+   
+   stages{
+      stage ('Git'){
+        steps{
+             git branch :'amine',
+             url : 'https://github.com/aminetrimech99/Devops.git',
+             credentialsId: 'git-token-token'
+             
+             }
        }
-}
+      stage ('MVN Clean')
+       {
+        steps{
+               sh 'mvn clean install -DskipTests'
+           }
+       }
+        stage ('MVN compile')
+       {
+        steps{
+               sh 'mvn compile'
+           }
+       }
+        stage ('build package')
+       {
+        steps{
+               sh 'mvn clean package'
+           }
+       }
+
+      
+        stage ('SonarQube :Quality Test')
+       {
+        steps{
+            withSonarQubeEnv(installationName: 'sonar'){
+               sh 'mvn sonar:sonar'
+            }
+           }
+       }
+             stage("Publish to Nexus Repository Manager") {
+           steps {
+                nexusArtifactUploader artifacts: [
+                    [
+                        artifactId: 'doukhou',
+                        classifier: '',
+                        file: 'target/doukhou-1.0.jar',
+                        type: 'jar']], 
+                    credentialsId: 'Devops',
+                    groupId: 'tn.esprit.rh', 
+                    nexusUrl: '192.168.1.12:8081', 
+                    nexusVersion: 'nexus3', 
+                    protocol: 'http',
+                    repository: 'doukhou-realeases',
+                    version: '1.0'
+           }
+             }
+          
+       
+       
+       }
+   }
