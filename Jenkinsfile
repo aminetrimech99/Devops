@@ -29,7 +29,28 @@ pipeline{
            }
        }
 
-      
+       stage('Docker image'){
+           steps {
+                sh 'docker build -t aminetr/springapp .'
+           }
+       }
+       stage('DockerCompose') {
+       
+                      steps {
+                           
+                       sh 'docker-compose up -d'
+                       }
+                         
+       }
+      stage('push to DockerHub'){
+           steps { 
+        withCredentials([string(credentialsId: 'dockerHub1-id', variable: 'dockerhubpwd')]) {
+                   sh 'docker login -u aminetr -p ${dockerhubpwd}'
+                   sh 'docker push aminetr/springapp'
+                   
+               }
+      }
+      }
         stage ('SonarQube :Quality Test')
        {
         steps{
@@ -38,7 +59,7 @@ pipeline{
             }
            }
        }
-             stage("Publish to Nexus Repository Manager") {
+      stage("Publish to Nexus Repository Manager") {
            steps {
                 nexusArtifactUploader artifacts: [
                     [
