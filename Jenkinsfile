@@ -4,7 +4,7 @@ pipeline{
    stages{
       stage ('Git'){
         steps{
-             git branch :'amine',
+             git branch :'MedAliHammami',
              url : 'https://github.com/aminetrimech99/Devops.git',
              credentialsId: 'git-token-token'
              
@@ -45,7 +45,7 @@ pipeline{
       stage('push to DockerHub'){
            steps { 
         withCredentials([string(credentialsId: 'dockerHub1-id', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u doukhou -p ${dockerhubpwd}'
+                   sh 'docker login -u doukhou -p 203JMT4598'
                    sh 'docker push doukhou/springapp'
                    
                }
