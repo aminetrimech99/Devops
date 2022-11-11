@@ -44,7 +44,7 @@ pipeline{
        }
       stage('push to DockerHub'){
            steps { 
-        withCredentials([string(credentialsId: 'dockerHub1-id', variable: 'dockerhubpwd')]) {
+        withCredentials([string(credentialsId: 'doukhou', variable: '203JMT4598')]) {
                    sh 'docker login -u doukhou -p 203JMT4598'
                    sh 'docker push doukhou/springapp'
                    
